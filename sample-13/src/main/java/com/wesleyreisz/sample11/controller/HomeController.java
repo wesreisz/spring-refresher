@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -25,7 +26,7 @@ public class HomeController {
     @GetMapping(value = "/footer")
     @ResponseBody
     public String showFooter(){
-        return String.join("Contact Administrator @", webmaster);
+        return String.format("Contact webmaster: %s", webmaster);
     }
 
     @GetMapping(value = "/header")
@@ -34,7 +35,7 @@ public class HomeController {
         return projectName;
     }
 
-    @GetMapping(value = "/accessDate")
+    @PostMapping(value = "/accessDate")
     @ResponseBody
     public String showAccessDate() {
         return localDate.format(DateTimeFormatter.ofPattern("yyyy-MMM-dd"));
